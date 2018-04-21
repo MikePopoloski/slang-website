@@ -1,5 +1,6 @@
-const path = require('path')
-const webpack = require('webpack')
+const path = require('path');
+const webpack = require('webpack');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 module.exports = {
 	entry: './source/main.js',
@@ -9,10 +10,15 @@ module.exports = {
 	},
 	devtool: 'inline-source-map',
 	plugins: [
+		new webpack.IgnorePlugin(
+	      /^((fs)|(path)|(os)|(crypto)|(source-map-support))$/,
+	      /vs(\/|\\)language(\/|\\)typescript(\/|\\)lib/
+	    ),
 		new webpack.ProvidePlugin({
 			$: "jquery",
 			jQuery: "jquery"
-		})
+		}),
+		new MonacoWebpackPlugin(languages=[])
 	],
 	module: {
 		rules: [

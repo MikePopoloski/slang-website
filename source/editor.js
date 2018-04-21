@@ -1,4 +1,4 @@
-import * as monaco from '@timkendrick/monaco-editor';
+import * as monaco from 'monaco-editor';
 import _ from 'underscore';
 
 export default function EditorComponent(container, state) {

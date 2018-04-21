@@ -14,26 +14,28 @@
   "author": "Mike Popoloski",
   "license": "MIT",
   "dependencies": {
-    "@timkendrick/monaco-editor": "0.0.7",
     "body-parser": "^1.18.2",
-    "bootstrap": "^3.3.7",
-    "compression": "^1.7.1",
-    "express": "^4.16.2",
+    "bootstrap": "^4.1.0",
+    "compression": "^1.7.2",
+    "express": "^4.16.3",
     "fs-extra": "^5.0.0",
     "golden-layout": "^1.5.9",
-    "jquery": "^3.2.1",
+    "jquery": "^3.3.1",
+    "monaco-editor": "^0.12.0",
+    "monaco-editor-webpack-plugin": "^1.1.0",
     "morgan": "^1.9.0",
     "nopt": "^4.0.1",
     "npm": "^5.8.0",
-    "pug": "^2.0.0-rc.4",
-    "underscore": "^1.8.3",
-    "winston": "^2.4.0"
+    "popper.js": "^1.14.3",
+    "pug": "^2.0.3",
+    "underscore": "^1.9.0",
+    "winston": "^2.4.2"
   },
   "devDependencies": {
-    "css-loader": "^0.28.9",
-    "file-loader": "^1.1.6",
-    "style-loader": "^0.19.1",
-    "webpack": "^3.10.0",
-    "webpack-dev-middleware": "^2.0.4"
+    "css-loader": "^0.28.11",
+    "file-loader": "^1.1.11",
+    "style-loader": "^0.21.0",
+    "webpack": "^4.6.0",
+    "webpack-dev-middleware": "^3.1.2"
   }
 }

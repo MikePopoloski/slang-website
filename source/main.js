@@ -3,21 +3,23 @@ import _ from 'underscore';
 import GoldenLayout from 'golden-layout';
 import CompilerComponent from './compiler.js';
 import EditorComponent from './editor.js';
+import CodeSession from './session.js';
 
 require("!style-loader!css-loader!./main.css")
 
 function start() {
+	var session = new CodeSession(1);
 	var defaultConfig = {
 		content: [{
 			type: 'row',
 			content: [{
 				type: 'component',
 				componentName: 'editor',
-				componentState: {}
+				componentState: {session: session}
 			}, {
 				type: 'component',
 				componentName: 'compiler',
-				componentState: {}
+				componentState: {session: session}
 			}]
 		}]
 	};

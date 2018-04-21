@@ -5,6 +5,7 @@ export default function EditorComponent(container, state) {
 	this.container = container;
 	this.domRoot = container.getElement();
 	this.domRoot.html($('#codeEditor').html());
+    this.session = state.session;
 
 	var editorRoot = this.domRoot.find(".monaco-placeholder");
 	this.editor = monaco.editor.create(editorRoot[0], {
@@ -29,9 +30,23 @@ export default function EditorComponent(container, state) {
         this.editor.layout({width: this.domRoot.width(), height: this.domRoot.height() - topBarHeight});
     }, this);
 
+    this.lastChangeEmitted = null;
+    this.debouncedEmitChange = _.debounce(_.bind(function () {
+        this.session.notifyEdit(this.getSource());
+    }, this), 200);
+    this.session.notifyEdit(this.getSource());
+
+    this.editor.getModel().onDidChangeContent(_.bind(function () {
+        this.debouncedEmitChange();
+    }, this));
+
     container.on('resize', this.updateEditorLayout);
     container.on('shown', this.updateEditorLayout);
     container.on('destroy', _.bind(function () {
         this.editor.dispose();
     }, this));
 }
+
+EditorComponent.prototype.getSource = function () {
+    return this.editor.getModel().getValue();
+};

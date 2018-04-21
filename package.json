@@ -15,11 +15,16 @@
   "license": "MIT",
   "dependencies": {
     "@timkendrick/monaco-editor": "0.0.7",
+    "body-parser": "^1.18.2",
     "bootstrap": "^3.3.7",
+    "compression": "^1.7.1",
     "express": "^4.16.2",
+    "fs-extra": "^5.0.0",
     "golden-layout": "^1.5.9",
     "jquery": "^3.2.1",
+    "morgan": "^1.9.0",
     "nopt": "^4.0.1",
+    "npm": "^5.8.0",
     "pug": "^2.0.0-rc.4",
     "underscore": "^1.8.3",
     "winston": "^2.4.0"

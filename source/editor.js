@@ -19,7 +19,6 @@ export default function EditorComponent(container, state) {
         minimap: {
             maxColumn: 80
         },
-        folding: true,
         lineNumbersMinChars: 3,
         emptySelectionClipboard: true,
         autoIndent: true

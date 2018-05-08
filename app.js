@@ -7,7 +7,7 @@ const nopt = require('nopt'),
       webpack = require('webpack'),
       webpackDev = require('webpack-dev-middleware'),
       logger = require('./lib/logger').logger,
-      handlers = require('./lib/handlers.js'),
+      handlers = require('./lib/handlers'),
       _ = require('underscore');
 
 const opts = nopt({

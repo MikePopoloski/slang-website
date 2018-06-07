@@ -5,8 +5,6 @@ const nopt = require('nopt'),
       helmet = require('helmet'),
       compression = require('compression'),
       bodyParser = require('body-parser'),
-      webpack = require('webpack'),
-      webpackDev = require('webpack-dev-middleware'),
       logger = require('./lib/logger').logger,
       handlers = require('./lib/handlers'),
       _ = require('underscore');
@@ -20,14 +18,10 @@ const opts = nopt({
 const hostname = opts.host;
 const port = opts.port || 3000;
 const staticDir = opts.static || 'static';
-const webpackConfig = require('./webpack.config.js');
-const webpackCompiler = webpack(webpackConfig);
 
 function renderConfig() {
     return {};
 };
-
-logger.info("Building webpack bundle...");
 
 const app = express();
 app.set('view engine', 'pug')
@@ -35,7 +29,6 @@ app.set('view engine', 'pug')
    .use(helmet())
    .use(compression())
    .use(express.static(staticDir))
-   .use(webpackDev(webpackCompiler))
    .use(bodyParser.json())
    .use(bodyParser.text({type: () => true}))
    .use('/api/compile', handlers.handleCompilationRequest)

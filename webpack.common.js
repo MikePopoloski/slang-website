@@ -8,10 +8,6 @@ module.exports = {
 		filename: 'bundle.js',
 		path: path.resolve(__dirname, 'static')
 	},
-	devtool: 'inline-source-map',
-	devServer: {
-		contentBase: './static'
-	},
 	plugins: [
 		new webpack.IgnorePlugin(
 	      /^((fs)|(path)|(os)|(crypto)|(source-map-support))$/,

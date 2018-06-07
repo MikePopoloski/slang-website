@@ -2,6 +2,7 @@ const nopt = require('nopt'),
       http = require('http'),
       express = require('express'),
       morgan = require('morgan'),
+      helmet = require('helmet'),
       compression = require('compression'),
       bodyParser = require('body-parser'),
       webpack = require('webpack'),
@@ -31,6 +32,7 @@ logger.info("Building webpack bundle...");
 const app = express();
 app.set('view engine', 'pug')
    .use(morgan('combined', {stream: logger.stream}))
+   .use(helmet())
    .use(compression())
    .use(express.static(staticDir))
    .use(webpackDev(webpackCompiler))

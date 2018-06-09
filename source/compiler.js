@@ -7,23 +7,14 @@ export default function CompilerComponent(container, state) {
 	this.contentRoot = this.domRoot.find(".content");
     this.session = state.session;
 
-    this.session.onCodeCompiled(_.bind(function (source) {
-    	this.compile(source);
+    this.session.onCodeCompiled(_.bind(function (results) {
+    	this.onCompiled(results);
     }, this));
 }
 
-const lineRe = /\r?\n/;
-
-function splitLines(text) {
-    const result = text.split(lineRe);
-    if (result.length > 0 && result[result.length - 1] === '')
-        return result.slice(0, result.length - 1);
-    return result;
-}
-
-CompilerComponent.prototype.compile = function (result) {
+CompilerComponent.prototype.onCompiled = function (results) {
 	this.contentRoot.empty();
-	_.each(splitLines(result.stdout || ''), function (line) {
+	_.each(results.lines, function (line) {
         this.add(line);
     }, this);
 }

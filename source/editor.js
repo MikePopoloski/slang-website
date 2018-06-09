@@ -1,5 +1,6 @@
 import * as monaco from 'monaco-editor';
 import _ from 'underscore';
+import './sv-lang';
 
 export default function EditorComponent(container, state) {
 	this.container = container;
@@ -7,10 +8,14 @@ export default function EditorComponent(container, state) {
 	this.domRoot.html($('#codeEditor').html());
     this.session = state.session;
 
+    this.session.onCodeCompiled(_.bind(function (results) {
+        this.handleCompileResults(results);
+    }, this));
+
 	var editorRoot = this.domRoot.find(".monaco-placeholder");
 	this.editor = monaco.editor.create(editorRoot[0], {
         scrollBeyondLastLine: false,
-        language: 'cppp',
+        language: 'system-verilog',
         fontFamily: 'monospace',
         readOnly: false,
         glyphMargin: true,
@@ -21,7 +26,8 @@ export default function EditorComponent(container, state) {
         },
         lineNumbersMinChars: 3,
         emptySelectionClipboard: true,
-        autoIndent: true
+        autoIndent: true,
+        formatOnType: true
     });
 
     this.updateEditorLayout = _.bind(function () {
@@ -48,4 +54,17 @@ export default function EditorComponent(container, state) {
 
 EditorComponent.prototype.getSource = function () {
     return this.editor.getModel().getValue();
+};
+
+EditorComponent.prototype.handleCompileResults = function (results) {
+    const markers = results.diags.map(d => ({
+        severity: d.severity,
+        startLineNumber: d.line,
+        startColumn: d.col,
+        endLineNumber: d.line,
+        endColumn: d.col + d.length,
+        message: d.message
+    }));
+
+    monaco.editor.setModelMarkers(this.editor.getModel(), "compiler", markers);
 };

@@ -9,7 +9,28 @@ const conf = {
     brackets: [
         ['{', '}'],
         ['(', ')'],
-        ['[', ']']
+        ['[', ']'],
+        ['begin', 'end'],
+        ['case', 'endcase'],
+        ['casex', 'endcase'],
+        ['casez', 'endcase'],
+        ['checker', 'endchecker'],
+        ['class', 'endclass'],
+        ['clocking', 'endclocking'],
+        ['config', 'endconfig'],
+        ['function', 'endfunction'],
+        ['generate', 'endgenerate'],
+        ['covergroup', 'endgroup'],
+        ['interface', 'endinterface'],
+        ['module', 'endmodule'],
+        ['package', 'endpackage'],
+        ['primitive', 'endprimitive'],
+        ['program', 'endprogram'],
+        ['property', 'endproperty'],
+        ['specify', 'endspecify'],
+        ['sequence', 'endsequence'],
+        ['table', 'endtable'],
+        ['task', 'endtask']
     ],
 
     autoClosingPairs: [
@@ -21,7 +42,12 @@ const conf = {
 
     surroundingPairs: [
         { open: '"', close: '"' },
-    ]
+    ],
+
+    onEnterRules: [{
+        beforeText: /^\s*(?:begin|case|casex|casez|checker|class|clocking|config|function|covergroup|interface|module|package|primitive|program|property|specify|sequence|table|task)/,
+        action: { indentAction: monaco.languages.IndentAction.Indent }
+    }]
 };
 
 const language = {
@@ -69,8 +95,6 @@ const language = {
             // TODO: time literals
 
             // TODO: include file names
-
-            // TODO: expanded brackets
 
             // whitespace
             { include: '@whitespace' },

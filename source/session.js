@@ -24,7 +24,6 @@ CodeSession.prototype.notifyEdit = function (source) {
 
     // Trigger a compilation on the server.
     var jsonData = JSON.stringify({source: source});
-    console.log("Sending: " + jsonData);
     $.ajax({
     	type: 'POST',
     	url: 'api/compile',

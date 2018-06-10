@@ -36,10 +36,11 @@ app.set('view engine', 'pug')
         res.render('index', renderConfig());
    });
 
-logger.info("=======================================");
-logger.info("Listening on http://" + (hostname || 'localhost') + ":" + port + "/");
-logger.info("  serving static files from '" + staticDir + "'");
-logger.info("=======================================");
+logger.warn("=======================================");
+logger.warn("Listening on http://" + (hostname || 'localhost') + ":" + port + "/");
+logger.warn("  serving static files from '" + staticDir + "'");
+logger.warn("  process.env.NODE_ENV:", process.env.NODE_ENV);
+logger.warn("=======================================");
 
 app.on('error', err => logger.error('Caught error:', err, "(in web error handler; continuing)"));
 app.listen(port, hostname);

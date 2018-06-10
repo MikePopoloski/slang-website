@@ -12,7 +12,8 @@ const nopt = require('nopt'),
 const opts = nopt({
     'host': [String],
     'port': [Number],
-    'static': [String]
+    'static': [String],
+    'localpath': [String]
 });
 
 const hostname = opts.host;
@@ -31,7 +32,9 @@ app.set('view engine', 'pug')
    .use(express.static(staticDir))
    .use(bodyParser.json())
    .use(bodyParser.text({type: () => true}))
-   .use('/api/compile', handlers.handleCompilationRequest)
+   .use('/api/compile', (req, res, next) => {
+        return handlers.handleCompilationRequest(req, res, next, opts);
+   })
    .get('/', (req, res) => {
         res.render('index', renderConfig());
    });
@@ -40,6 +43,9 @@ logger.warn("=======================================");
 logger.warn("Listening on http://" + (hostname || 'localhost') + ":" + port + "/");
 logger.warn("  serving static files from '" + staticDir + "'");
 logger.warn("  process.env.NODE_ENV:", process.env.NODE_ENV);
+if (opts.localpath) {
+    logger.warn("Running with local compiler:", opts.localpath);
+}
 logger.warn("=======================================");
 
 app.on('error', err => logger.error('Caught error:', err, "(in web error handler; continuing)"));

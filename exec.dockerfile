@@ -1,8 +1,8 @@
-FROM 		mpopoloski/slang:1.1
+FROM 		mpopoloski/slang:latest
 MAINTAINER 	Mike Popoloski
 CMD 		bash
 
 RUN git clone https://github.com/MikePopoloski/slang.git
-RUN cd slang && scripts/bin/linux/genie --gcc=linux-gcc gmake
-RUN cd /slang && make -C build/projects/gmake-linux -j 4 CXX=g++-7
-RUN cd /slang && cp build/linux64_gcc/bin/driverDebug /usr/local/bin/slang
+RUN cd slang && mkdir build && cd build && cmake -DCMAKE_CXX_COMPILER=g++-8 ..
+RUN cd /slang && make -C build -j 8
+RUN cp /slang/build/bin/driver /usr/local/bin/slang

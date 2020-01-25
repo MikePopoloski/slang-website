@@ -8,7 +8,7 @@ git fetch
 
 LOCAL=$(git rev-parse @)
 REMOTE=$(git rev-parse '@{u}')
-if [$LOCAL != $REMOTE]; then
+if [ $LOCAL != $REMOTE ]; then
 	cd ../m.css/
 	git pull
 	cd ../slang/

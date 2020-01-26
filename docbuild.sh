@@ -3,7 +3,7 @@
 # This script checks a git repository for changes and, if it finds them,
 # pulls, runs a build of the docs, and then copies them to an output directory.
 
-export PATH=$PATH:/home/ubuntu/.local/bin
+export PATH=$PATH:/home/ubuntu/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 export PYTHONPATH=/home/ubuntu/.local/lib/python3.6/site-packages
 
 cd /home/ubuntu/slang

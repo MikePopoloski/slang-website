@@ -25,25 +25,25 @@
     "helmet": "^3.21.2",
     "jquery": "^3.4.1",
     "lodash": "^4.17.15",
-    "monaco-editor": "^0.18.1",
-    "monaco-editor-webpack-plugin": "^1.7.0",
+    "monaco-editor": "^0.19.3",
+    "monaco-editor-webpack-plugin": "^1.8.2",
     "morgan": "^1.9.1",
     "nopt": "^4.0.1",
-    "npm": "^6.13.4",
-    "popper.js": "^1.16.0",
+    "npm": "^6.13.6",
+    "popper.js": "^1.16.1",
     "pug": "^2.0.4",
     "tmp-promise": "^2.0.2",
     "tree-kill": "^1.2.2",
-    "underscore": "^1.9.1",
+    "underscore": "^1.9.2",
     "winston": "^3.2.1"
   },
   "devDependencies": {
-    "css-loader": "^3.3.2",
+    "css-loader": "^3.4.2",
     "file-loader": "^5.0.2",
     "style-loader": "^1.1.3",
-    "webpack": "^4.41.2",
+    "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.9.0",
+    "webpack-dev-server": "^3.10.1",
     "webpack-merge": "^4.2.2"
   }
 }

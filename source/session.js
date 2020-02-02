@@ -74,6 +74,8 @@ CodeSession.prototype.handleResult = function (result) {
     this.codeCompileCallbacks.fire({
         raw: raw,
         lines: lines,
-        diags: diags
+        diags: diags,
+        code: result.code,
+        version: result.version
     });
 }

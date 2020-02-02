@@ -17,6 +17,10 @@ CompilerComponent.prototype.onCompiled = function (results) {
 	_.each(results.lines, function (line) {
         this.add(line);
     }, this);
+
+	this.add('<br/>')
+    this.add('compiler returned: ' + results.code)
+    this.add(results.version)
 }
 
 CompilerComponent.prototype.add = function (line) {

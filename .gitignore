@@ -2,3 +2,5 @@ node_modules/
 static/
 app.log
 source.sv
+slang
+slang.exe

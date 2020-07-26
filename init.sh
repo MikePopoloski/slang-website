@@ -16,7 +16,7 @@ apt-get update
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 
 # Install other apt packages
-apt-get install -y python3-pip cmake nodejs docker.io nginx unzip
+apt-get install -y python3-pip cmake nodejs docker.io nginx unzip jq
 
 # Install doxygen
 wget http://doxygen.nl/files/doxygen-1.8.17.linux.bin.tar.gz
@@ -81,9 +81,10 @@ git reset --hard HEAD~1
 # Reload nginx
 nginx -s reload
 
-# Setup crontab to automatically do docbuild
+# Setup crontab to automatically do docbuild, bin release
 # sudo crontab -e
 # */5 * * * * /home/ubuntu/slang-website/docbuild.sh 2>&1 >> /var/log/docbuild
+# */5 * * * * /home/ubuntu/slang-website/updatebin.sh 2>&1 >> /var/log/updatebin
 
 # Run let's encrypt / certbot setup
 

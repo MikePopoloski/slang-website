@@ -84,6 +84,8 @@ nginx -s reload
 # Setup crontab to automatically do docbuild, bin release
 # sudo crontab -e
 # */5 * * * * /home/ubuntu/slang-website/docbuild.sh 2>&1 >> /var/log/docbuild
+#
+# crontab -e
 # */5 * * * * /home/ubuntu/slang-website/updatebin.sh 2>&1 >> /var/log/updatebin
 
 # Run let's encrypt / certbot setup

@@ -24,7 +24,7 @@
     "golden-layout": "^1.5.9",
     "helmet": "^4.3.1",
     "jquery": "^3.5.1",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "monaco-editor": "^0.21.2",
     "monaco-editor-webpack-plugin": "^2.1.0",
     "morgan": "^1.10.0",

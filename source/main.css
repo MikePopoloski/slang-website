@@ -1,9 +1,10 @@
 @import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
-@import url("../node_modules/golden-layout/src/css/goldenlayout-base.css");
-@import url("../node_modules/golden-layout/src/css/goldenlayout-light-theme.css");
+@import url("../node_modules/golden-layout/dist/css/goldenlayout-base.css");
+@import url("../node_modules/golden-layout/dist/css/themes/goldenlayout-light-theme.css");
 
-#root {
+#root, #codeEditor, #compiler, .content {
     width: 100%;
+    height: 100%;
     margin: 0;
     padding: 0;
     overflow: hidden;

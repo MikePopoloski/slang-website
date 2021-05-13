@@ -1,5 +1,4 @@
 const nopt = require('nopt'),
-      http = require('http'),
       express = require('express'),
       morgan = require('morgan'),
       helmet = require('helmet'),

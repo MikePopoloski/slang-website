@@ -4,8 +4,9 @@ import './sv-lang';
 
 export default function EditorComponent(container, state) {
 	this.container = container;
-	this.domRoot = container.getElement();
-	this.domRoot.html($('#codeEditor').html());
+    this.domRoot = $('#codeEditor');
+	container.element.appendChild(this.domRoot.get(0));
+
     this.session = state.session;
 
     this.session.onCodeCompiled(_.bind(function (results) {

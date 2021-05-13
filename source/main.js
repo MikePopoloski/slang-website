@@ -1,6 +1,6 @@
 import 'bootstrap';
 import _ from 'underscore';
-import GoldenLayout from 'golden-layout';
+import { GoldenLayout, ItemType } from 'golden-layout';
 import CompilerComponent from './compiler.js';
 import EditorComponent from './editor.js';
 import CodeSession from './session.js';
@@ -10,40 +10,42 @@ require("!style-loader!css-loader!./main.css")
 function start() {
 	var session = new CodeSession(1);
 	var defaultConfig = {
-		content: [{
-			type: 'row',
+		root: {
+			type: ItemType.row,
 			content: [{
 				type: 'component',
-				componentName: 'editor',
+				componentType: 'editor',
 				componentState: {session: session}
 			}, {
 				type: 'component',
-				componentName: 'compiler',
+				componentType: 'compiler',
 				componentState: {session: session}
 			}]
-		}]
+		}
 	};
 
 	var rootElement = $("#root");
-	var layout = new GoldenLayout(defaultConfig, rootElement);
+	var layout = new GoldenLayout(rootElement.get(0));
+	
+	layout.getComponentEvent = (container, itemConfig) => {
+		const { componentType, componentState } = itemConfig;
+		if (componentType === 'editor')
+			new EditorComponent(container, componentState);
+		else if (componentType === 'compiler')
+			new CompilerComponent(container, componentState);
+		else
+			throw new Error('Invalid component type.');
+	}
 
-	layout.registerComponent('compiler', function (container, state) {
-		return new CompilerComponent(container, state);
-	});
-
-	layout.registerComponent('editor', function (container, state) {
-		return new EditorComponent(container, state);
-	})
-
-	layout.init()
+	layout.loadLayout(defaultConfig);
 
 	function sizeRoot() {
 		var height = $(window).height() - rootElement.position().top;
 		rootElement.height(height);
-		layout.updateSize();
+		layout.setSize(rootElement.width(), rootElement.height());
 	}
 
-	$(window).resize(sizeRoot);
+	$(window).on('resize', sizeRoot);
 	sizeRoot();
 }
 

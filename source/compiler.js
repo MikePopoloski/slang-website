@@ -2,8 +2,9 @@ import _ from 'underscore';
 
 export default function CompilerComponent(container, state) {
 	this.container = container;
-	this.domRoot = container.getElement();
-	this.domRoot.html($('#compiler').html());
+	this.domRoot = $('#compiler');
+	container.element.appendChild(this.domRoot.get(0));
+	
 	this.contentRoot = this.domRoot.find(".content");
     this.session = state.session;
 

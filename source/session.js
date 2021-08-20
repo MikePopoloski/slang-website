@@ -50,7 +50,7 @@ CodeSession.prototype.handleResult = function (result) {
 
     var chunks = raw.split(/source.sv:(\d+):(\d+): (\w+): (.*)\r?\n/);
     var i = 0;
-    if (chunks.length > 0 && chunks[0] === '')
+    if (chunks.length > 0)
         i += 1;
 
     for (; i < chunks.length; i += 5) {

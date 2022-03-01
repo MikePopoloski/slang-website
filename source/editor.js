@@ -1,6 +1,5 @@
 import * as monaco from 'monaco-editor';
 import _ from 'underscore';
-import './sv-lang';
 
 export default function EditorComponent(container, state) {
 	this.container = container;
@@ -16,8 +15,8 @@ export default function EditorComponent(container, state) {
 	var editorRoot = this.domRoot.find(".monaco-placeholder");
 	this.editor = monaco.editor.create(editorRoot[0], {
         scrollBeyondLastLine: false,
-        language: 'system-verilog',
-        fontFamily: 'monospace',
+        language: 'systemverilog',
+        fontFamily: 'Consolas, "Liberation Mono", Courier, monospace',
         readOnly: false,
         glyphMargin: true,
         quickSuggestions: false,
@@ -28,7 +27,8 @@ export default function EditorComponent(container, state) {
         lineNumbersMinChars: 3,
         emptySelectionClipboard: true,
         autoIndent: true,
-        formatOnType: true
+        formatOnType: true,
+        theme: 'vs-dark'
     });
 
     this.updateEditorLayout = _.bind(function () {

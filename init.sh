@@ -64,7 +64,7 @@ npm install
 # ------------ sudo again
 
 # Docker setup
-docker pull mpopoloski/slang-website
+docker pull ubuntu:latest
 usermod -aG docker $USER
 
 # Setup nginx website

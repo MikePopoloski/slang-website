@@ -73,20 +73,17 @@ rm /etc/nginx/sites-enabled/default
 ln -s /etc/nginx/sites-available/sv-lang.com /etc/nginx/sites-enabled/sv-lang.com
 mkdir /var/www/sv-lang.com
 
-# Do initial doc build
+# Do initial build
 cd /home/ubuntu/slang
 git reset --hard HEAD~1
-/home/ubuntu/slang-website/docbuild.sh
+/home/ubuntu/slang-website/cibuild.sh
 
 # Reload nginx
 nginx -s reload
 
-# Setup crontab to automatically do docbuild, bin release
+# Setup crontab to automatically do build
 # sudo crontab -e
-# */5 * * * * /home/ubuntu/slang-website/docbuild.sh 2>&1 >> /var/log/docbuild
-#
-# crontab -e
-# */5 * * * * /home/ubuntu/slang-website/updatebin.sh 2>&1 >> /var/log/updatebin
+# */5 * * * * /home/ubuntu/slang-website/cibuild.sh 2>&1 >> /var/log/cibuild
 
 # Run let's encrypt / certbot setup
 

@@ -23,5 +23,5 @@ if [ $LOCAL != $REMOTE ] || [ ! -z $1 ]; then
 	make docs
 	rm -rf /var/www/sv-lang.com/html
 	cp -r docs/html/ /var/www/sv-lang.com/html/
-	cp bin/slang ~/slang-website/
+	cp bin/slang /home/ubuntu/slang-website/
 fi

@@ -83,7 +83,7 @@ nginx -s reload
 
 # Setup crontab to automatically do build
 # sudo crontab -e
-# */5 * * * * /home/ubuntu/slang-website/cibuild.sh 2>&1 >> /var/log/cibuild
+# */5 * * * * /home/ubuntu/slang-website/cibuild.sh >> /var/log/cibuild 2>&1
 
 # Run let's encrypt / certbot setup
 

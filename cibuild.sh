@@ -12,10 +12,12 @@ git fetch
 LOCAL=$(git rev-parse @)
 REMOTE=$(git rev-parse '@{u}')
 if [ $LOCAL != $REMOTE ] || [ ! -z $1 ]; then
+	echo "Starting" | ts
 	cd ../m.css/
 	git pull
 	cd ../slang/
 	git pull
+	git submodule update --init --recursive
 	rm -rf build
 	mkdir build
 	cd build

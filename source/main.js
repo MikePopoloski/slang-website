@@ -26,7 +26,7 @@ function start() {
 
 	var rootElement = $("#root");
 	var layout = new GoldenLayout(rootElement.get(0));
-	
+
 	layout.getComponentEvent = (container, itemConfig) => {
 		const { componentType, componentState } = itemConfig;
 		if (componentType === 'editor')

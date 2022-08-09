@@ -4,7 +4,7 @@ export default function CompilerComponent(container, state) {
 	this.container = container;
 	this.domRoot = $('#compiler');
 	container.element.appendChild(this.domRoot.get(0));
-	
+
 	this.contentRoot = this.domRoot.find(".content");
     this.session = state.session;
 

@@ -1,4 +1,5 @@
 #!/bin/sh
+set -euo pipefail
 
 # This script checks a git repository for changes and, if it finds them,
 # pulls, runs a build, and then copies the artifacts to an output directory.

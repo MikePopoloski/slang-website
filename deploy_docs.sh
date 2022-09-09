@@ -1,8 +1,10 @@
-#!/bin/sh
+#!/bin/bash
 set -euo pipefail
 
-pwd
-tar -xvf slang.tar.gz
+tar -xvf upload/slang.tar.gz
 rm -rf /var/www/sv-lang.com/html
 cp -r build/docs/html/ /var/www/sv-lang.com/html/
-cp slang /home/ubuntu/slang-website/
+cp build/bin/slang /home/ubuntu/slang-website/
+rm -rf upload
+rm -rf build
+echo "Done"

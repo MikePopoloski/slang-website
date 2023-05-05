@@ -1,32 +1,32 @@
 import _ from 'underscore';
 
 export default function CodeSession(id) {
-	this.id = id;
-	this.source = null;
+    this.id = id;
+    this.source = null;
     this.options = '';
-	this.codeEditCallbacks = $.Callbacks('unique');
-	this.codeCompileCallbacks = $.Callbacks('unique');
+    this.codeEditCallbacks = $.Callbacks('unique');
+    this.codeCompileCallbacks = $.Callbacks('unique');
 }
 
 CodeSession.prototype.onCodeEdited = function (fn) {
-	this.codeEditCallbacks.add(fn);
+    this.codeEditCallbacks.add(fn);
 }
 
 CodeSession.prototype.onCodeCompiled = function (fn) {
-	this.codeCompileCallbacks.add(fn);
+    this.codeCompileCallbacks.add(fn);
 }
 
 CodeSession.prototype.sendCompileRequest = function (source, options) {
     var jsonData = JSON.stringify({source: source, options: options});
     $.ajax({
-    	type: 'POST',
-    	url: 'api/compile',
-    	dataType: 'json',
-    	contentType: 'application/json',
-    	data: jsonData,
-    	success: _.bind(function (result) {
+        type: 'POST',
+        url: 'api/compile',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: jsonData,
+        success: _.bind(function (result) {
             this.handleResult(result);
-    	}, this)
+        }, this)
     });
 }
 

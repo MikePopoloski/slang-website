@@ -2,9 +2,9 @@ import * as monaco from 'monaco-editor';
 import _ from 'underscore';
 
 export default function EditorComponent(container, state) {
-	this.container = container;
+    this.container = container;
     this.domRoot = $('#codeEditor');
-	container.element.appendChild(this.domRoot.get(0));
+    container.element.appendChild(this.domRoot.get(0));
 
     this.session = state.session;
 
@@ -12,8 +12,8 @@ export default function EditorComponent(container, state) {
         this.handleCompileResults(results);
     }, this));
 
-	var editorRoot = this.domRoot.find(".monaco-placeholder");
-	this.editor = monaco.editor.create(editorRoot[0], {
+    var editorRoot = this.domRoot.find(".monaco-placeholder");
+    this.editor = monaco.editor.create(editorRoot[0], {
         scrollBeyondLastLine: false,
         language: 'systemverilog',
         fontFamily: 'Consolas, "Liberation Mono", Courier, monospace',

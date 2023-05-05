@@ -6,11 +6,18 @@ export default function CompilerComponent(container, state) {
 	container.element.appendChild(this.domRoot.get(0));
 
 	this.contentRoot = this.domRoot.find(".content");
+	this.optionsField = this.domRoot.find('.options');
     this.session = state.session;
 
     this.session.onCodeCompiled(_.bind(function (results) {
     	this.onCompiled(results);
     }, this));
+
+	const optionsChange = _.debounce(e => {
+		this.session.notifyOptions($(e.target).val());
+	}, 800);
+
+	this.optionsField.on('change', optionsChange).on('keyup', optionsChange);
 }
 
 CompilerComponent.prototype.onCompiled = function (results) {

@@ -20,6 +20,8 @@ pre {
 }
 
 pre.content {
+    padding-top: 3px;
+    padding-left: 1rem;
     background-color: #1e1e1e !important;
     overflow: auto;
 }
@@ -62,4 +64,26 @@ a {
 
 .lm_header {
     background-color: #121212 !important;
+}
+
+input, input:focus {
+    color: #eee !important;
+    background-color: #474747;
+    border: 0 !important;
+}
+
+.form-control, .form-control:focus {
+    color: #eee !important;
+    background-color: #474747;
+    border: 0 !important;
+    border-radius: 0;
+    font-size: small;
+}
+
+.bg-light {
+    background-color: #333 !important;
+}
+
+.top-bar.btn-toolbar.bg-light {
+    border-bottom: 1px solid #202122;
 }

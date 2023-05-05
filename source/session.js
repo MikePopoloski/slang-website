@@ -3,6 +3,7 @@ import _ from 'underscore';
 export default function CodeSession(id) {
 	this.id = id;
 	this.source = null;
+    this.options = '';
 	this.codeEditCallbacks = $.Callbacks('unique');
 	this.codeCompileCallbacks = $.Callbacks('unique');
 }
@@ -15,15 +16,8 @@ CodeSession.prototype.onCodeCompiled = function (fn) {
 	this.codeCompileCallbacks.add(fn);
 }
 
-CodeSession.prototype.notifyEdit = function (source) {
-    if (source === this.source)
-        return;
-
-    this.source = source;
-    this.codeEditCallbacks.fire(source);
-
-    // Trigger a compilation on the server.
-    var jsonData = JSON.stringify({source: source});
+CodeSession.prototype.sendCompileRequest = function (source, options) {
+    var jsonData = JSON.stringify({source: source, options: options});
     $.ajax({
     	type: 'POST',
     	url: 'api/compile',
@@ -34,6 +28,23 @@ CodeSession.prototype.notifyEdit = function (source) {
             this.handleResult(result);
     	}, this)
     });
+}
+
+CodeSession.prototype.notifyOptions = function (options) {
+    if (options === this.options)
+        return;
+
+    this.options = options;
+    this.sendCompileRequest(this.source, this.options);
+}
+
+CodeSession.prototype.notifyEdit = function (source) {
+    if (source === this.source)
+        return;
+
+    this.source = source;
+    this.codeEditCallbacks.fire(source);
+    this.sendCompileRequest(this.source, this.options);
 }
 
 function splitLines(text) {

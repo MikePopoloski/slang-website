@@ -17,6 +17,8 @@ html(lang="en")
         .monaco-placeholder
 
       #compiler
+        .top-bar.btn-toolbar.options-toolbar.bg-light(role="toolbar")
+          input.options.form-control(type="text" placeholder="Compiler options..." size="128" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false")
         pre.content
 
     script(src="bundle.js")

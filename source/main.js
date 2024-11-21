@@ -11,7 +11,7 @@ function start() {
     var session = new CodeSession(1);
     var defaultConfig = {
         root: {
-            type: ItemType.row,
+            type: 'row',
             content: [{
                 type: 'component',
                 componentType: 'editor',
@@ -42,7 +42,7 @@ function start() {
     function sizeRoot() {
         var height = $(window).height() - rootElement.position().top;
         rootElement.height(height);
-        layout.setSize(rootElement.width(), rootElement.height());
+        layout.updateRootSize()
     }
 
     $(window).on('resize', sizeRoot);

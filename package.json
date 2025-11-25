@@ -17,7 +17,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "ansi-to-html": "^0.7.2",
-    "body-parser": "^2.2.0",
+    "body-parser": "^2.2.1",
     "bootstrap": "^5.3.7",
     "clean-webpack-plugin": "^4.0.0",
     "compression": "^1.8.1",

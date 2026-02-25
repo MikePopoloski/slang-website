@@ -31,7 +31,7 @@
     "monaco-editor-webpack-plugin": "^7.1.1",
     "morgan": "^1.10.1",
     "nopt": "^9.0.0",
-    "npm": "^11.7.0",
+    "npm": "^11.10.1",
     "popper.js": "^1.16.1",
     "pug": "^3.0.3",
     "tmp-promise": "^3.0.3",

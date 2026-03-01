@@ -17,7 +17,7 @@
   "dependencies": {
     "@popperjs/core": "^2.11.8",
     "ansi-to-html": "^0.7.2",
-    "body-parser": "^2.2.1",
+    "body-parser": "^2.2.2",
     "bootstrap": "^5.3.8",
     "clean-webpack-plugin": "^4.0.0",
     "compression": "^1.8.1",
@@ -31,22 +31,19 @@
     "monaco-editor-webpack-plugin": "^7.1.1",
     "morgan": "^1.10.1",
     "nopt": "^9.0.0",
-    "npm": "^11.7.0",
     "popper.js": "^1.16.1",
     "pug": "^3.0.3",
     "tmp-promise": "^3.0.3",
     "tree-kill": "^1.2.2",
-    "underscore": "^1.13.7",
+    "underscore": "^1.13.8",
     "winston": "^3.19.0"
   },
   "devDependencies": {
-    "css-loader": "^7.1.2",
+    "css-loader": "^7.1.4",
     "file-loader": "^6.2.0",
     "style-loader": "^4.0.0",
-    "webpack": "^5.104.1",
+    "webpack": "^5.105.3",
     "webpack-cli": "^6.0.1",
-    "webpack-dev-middleware": "^7.4.5",
-    "webpack-dev-server": "^5.2.2",
     "webpack-merge": "^6.0.1"
   }
 }

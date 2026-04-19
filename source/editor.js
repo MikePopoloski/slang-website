@@ -53,19 +53,44 @@ export default function EditorComponent(container, state) {
     }, this));
 
     var shareBtn = $('#shareBtn');
+    var shareModal = $('#shareModal');
+    var shareLink = $('#shareLink');
+    var copyLinkBtn = $('#copyLinkBtn');
+    var closeModalBtn = $('#closeModalBtn');
+    var shareModalClose = $('.share-modal-close');
+
     shareBtn.on('click', _.bind(function () {
         var state = this.session.getCurrentState();
         setStateInHash(state.source, state.options);
         var url = window.location.href;
-        navigator.clipboard.writeText(url).then(() => {
-            shareBtn.text('Copied!');
+        shareLink.val(url);
+        shareModal.addClass('show');
+    }, this));
+
+    copyLinkBtn.on('click', function () {
+        shareLink.select();
+        navigator.clipboard.writeText(shareLink.val()).then(() => {
+            copyLinkBtn.text('Copied!');
             setTimeout(() => {
-                shareBtn.text('Share');
+                copyLinkBtn.text('Copy Link');
             }, 2000);
         }).catch(() => {
-            alert('Link updated in URL. Copy from address bar:\n' + url);
+            alert('Could not copy. Please copy manually:\n' + shareLink.val());
         });
-    }, this));
+    });
+
+    var closeModal = function () {
+        shareModal.removeClass('show');
+        copyLinkBtn.text('Copy Link');
+    };
+
+    closeModalBtn.on('click', closeModal);
+    shareModalClose.on('click', closeModal);
+    shareModal.on('click', function (e) {
+        if (e.target === shareModal[0]) {
+            closeModal();
+        }
+    });
 
     container.on('resize', this.updateEditorLayout);
     container.on('shown', this.updateEditorLayout);

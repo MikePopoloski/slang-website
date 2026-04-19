@@ -14,6 +14,19 @@ html(lang="en")
 
     #root
 
+    #shareModal.share-modal
+      .share-modal-content
+        .share-modal-header
+          h4 Share Slang Code
+          button.share-modal-close(type="button" title="Close") ×
+        .share-modal-body
+          p Copy this link to share your code:
+          .share-link-container
+            input#shareLink.share-link-input(type="text" readonly)
+            button#copyLinkBtn.btn.btn-sm.btn-primary Copy Link
+        .share-modal-footer
+          button#closeModalBtn.btn.btn-sm.btn-secondary Close
+
     .gl_keep.template
       #codeEditor
         .top-bar.btn-toolbar(role="toolbar")

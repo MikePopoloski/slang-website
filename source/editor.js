@@ -1,5 +1,6 @@
 import * as monaco from 'monaco-editor';
 import _ from 'underscore';
+import { setStateInHash } from './urlState.js';
 
 export default function EditorComponent(container, state) {
     this.container = container;
@@ -31,6 +32,11 @@ export default function EditorComponent(container, state) {
         theme: 'vs-dark'
     });
 
+    if (this.session.initialSource !== null) {
+        this.editor.getModel().setValue(this.session.initialSource);
+        this.session.source = this.session.initialSource;
+    }
+
     this.updateEditorLayout = _.bind(function () {
         var topBarHeight = this.domRoot.find(".top-bar").outerHeight(true) || 0;
         this.editor.layout({width: this.domRoot.width(), height: this.domRoot.height() - topBarHeight});
@@ -44,6 +50,21 @@ export default function EditorComponent(container, state) {
 
     this.editor.getModel().onDidChangeContent(_.bind(function () {
         this.debouncedEmitChange();
+    }, this));
+
+    var shareBtn = $('#shareBtn');
+    shareBtn.on('click', _.bind(function () {
+        var state = this.session.getCurrentState();
+        setStateInHash(state.source, state.options);
+        var url = window.location.href;
+        navigator.clipboard.writeText(url).then(() => {
+            shareBtn.text('Copied!');
+            setTimeout(() => {
+                shareBtn.text('Share');
+            }, 2000);
+        }).catch(() => {
+            alert('Link updated in URL. Copy from address bar:\n' + url);
+        });
     }, this));
 
     container.on('resize', this.updateEditorLayout);

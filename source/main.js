@@ -4,11 +4,18 @@ import { GoldenLayout, ItemType } from 'golden-layout';
 import CompilerComponent from './compiler.js';
 import EditorComponent from './editor.js';
 import CodeSession from './session.js';
+import { getStateFromHash } from './urlState.js';
 
 require("!style-loader!css-loader!./main.css")
 
 function start() {
     var session = new CodeSession(1);
+    
+    var urlState = getStateFromHash();
+    if (urlState) {
+        session.setInitialState(urlState.source || '', urlState.options || '');
+    }
+    
     var defaultConfig = {
         root: {
             type: 'row',

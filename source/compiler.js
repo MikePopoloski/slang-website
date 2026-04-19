@@ -20,6 +20,11 @@ export default function CompilerComponent(container, state) {
         this.onCompiled(results);
     }, this));
 
+    if (this.session.initialOptions) {
+        this.optionsField.val(this.session.initialOptions);
+        this.session.options = this.session.initialOptions;
+    }
+
     const optionsChange = _.debounce(e => {
         this.session.notifyOptions($(e.target).val());
     }, 800);

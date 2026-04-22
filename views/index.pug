@@ -2,19 +2,35 @@ doctype html
 html(lang="en")
   head
     include head.pug
+    link(rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%23007bff'>S</text></svg>")
 
   body
     .navbar
       .container-fluid
         .navbar-header
           a.navbar-brand(href='#' title='slang explorer') slang explorer
+        .navbar-nav.navbar-right
+          button#shareBtn.btn.btn-sm.btn-primary(title="Copy shareable link to clipboard") Share
 
     #root
+
+    #shareModal.share-modal
+      .share-modal-content
+        .share-modal-header
+          h4 Share Slang Code
+          button.share-modal-close(type="button" title="Close") ×
+        .share-modal-body
+          p Copy this link to share your code:
+          .share-link-container
+            input#shareLink.share-link-input(type="text" readonly)
+            button#copyLinkBtn.btn.btn-sm.btn-primary Copy Link
+        .share-modal-footer
+          button#closeModalBtn.btn.btn-sm.btn-secondary Close
 
     .gl_keep.template
       #codeEditor
         .top-bar.btn-toolbar(role="toolbar")
-        .monaco-placeholder
+          .monaco-placeholder
 
       #compiler
         .top-bar.btn-toolbar.options-toolbar.bg-light(role="toolbar")

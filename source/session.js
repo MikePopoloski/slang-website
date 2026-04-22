@@ -4,6 +4,8 @@ export default function CodeSession(id) {
     this.id = id;
     this.source = null;
     this.options = '';
+    this.initialSource = null;
+    this.initialOptions = '';
     this.codeEditCallbacks = $.Callbacks('unique');
     this.codeCompileCallbacks = $.Callbacks('unique');
 }
@@ -14,6 +16,18 @@ CodeSession.prototype.onCodeEdited = function (fn) {
 
 CodeSession.prototype.onCodeCompiled = function (fn) {
     this.codeCompileCallbacks.add(fn);
+}
+
+CodeSession.prototype.setInitialState = function (source, options) {
+    this.initialSource = source;
+    this.initialOptions = options;
+}
+
+CodeSession.prototype.getCurrentState = function () {
+    return {
+        source: this.source,
+        options: this.options
+    };
 }
 
 CodeSession.prototype.sendCompileRequest = function (source, options) {

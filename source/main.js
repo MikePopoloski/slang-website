@@ -46,6 +46,10 @@ function start() {
 
     layout.loadLayout(defaultConfig);
 
+    if (urlState) {
+        session.sendCompileRequest(urlState.source || '', urlState.options || '');
+    }
+
     function sizeRoot() {
         var height = $(window).height() - rootElement.position().top;
         rootElement.height(height);

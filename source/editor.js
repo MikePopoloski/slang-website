@@ -103,9 +103,19 @@ EditorComponent.prototype.getSource = function () {
     return this.editor.getModel().getValue();
 };
 
+function stringToMonacoSeverity(severity) {
+    const severityMap = {
+        'error': 8,
+        'warning': 4,
+        'info': 2,
+        'note': 1
+    };
+    return severityMap[severity.toLowerCase()] || 4;
+}
+
 EditorComponent.prototype.handleCompileResults = function (results) {
     const markers = results.diags.map(d => ({
-        severity: d.severity,
+        severity: stringToMonacoSeverity(d.severity),
         startLineNumber: d.line,
         startColumn: d.col,
         endLineNumber: d.line,

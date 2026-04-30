@@ -69,7 +69,7 @@ function splitLines(text) {
 }
 
 CodeSession.prototype.handleResult = function (result) {
-    var raw = result.stdout || ''
+    var raw = result.stderr || result.stdout || ''
     var diags = []
     var lines = splitLines(raw);
 

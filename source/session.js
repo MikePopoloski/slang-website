@@ -73,7 +73,10 @@ CodeSession.prototype.handleResult = function (result) {
     var diags = []
     var lines = splitLines(raw);
 
-    var chunks = raw.split(/source.sv:(\d+):(\d+): (\w+): (.*)\r?\n/);
+    // Strip ANSI codes to handle both local and production formats
+    var cleanRaw = raw.replace(/\u001b\[\d+m/g, '');
+
+    var chunks = cleanRaw.split(/source.sv:(\d+):(\d+): (\w+): (.*)\r?\n/);
     var i = 0;
     if (chunks.length > 0)
         i += 1;

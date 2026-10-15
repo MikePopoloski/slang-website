@@ -20,17 +20,17 @@
     "body-parser": "^2.3.0",
     "bootstrap": "^5.3.8",
     "clean-webpack-plugin": "^4.0.0",
-    "compression": "^1.8.1",
-    "express": "^5.2.1",
-    "fs-extra": "^11.4.0",
+    "compression": "^1.8.2",
+    "express": "^5.3.0",
+    "fs-extra": "^11.4.1",
     "golden-layout": "^2.6.0",
     "helmet": "^8.3.0",
     "jquery": "^4.0.0",
     "lodash": "^4.18.1",
     "lz-string": "^1.5.0",
-    "monaco-editor": "^0.56.0",
+    "monaco-editor": "^0.57.0",
     "monaco-editor-webpack-plugin": "^7.1.1",
-    "morgan": "^1.11.0",
+    "morgan": "^1.12.1",
     "nopt": "^10.0.1",
     "popper.js": "^1.16.1",
     "pug": "^3.0.4",
@@ -40,11 +40,11 @@
     "winston": "^3.19.0"
   },
   "devDependencies": {
-    "css-loader": "^7.1.4",
+    "css-loader": "^7.1.5",
     "file-loader": "^6.2.0",
     "style-loader": "^4.0.0",
-    "webpack": "^5.109.2",
-    "webpack-cli": "^7.2.2",
+    "webpack": "^5.111.1",
+    "webpack-cli": "^7.2.3",
     "webpack-merge": "^6.0.1"
   }
 }
